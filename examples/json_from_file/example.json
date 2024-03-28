@@ -1,0 +1,30 @@
+{
+    "this is": "a json file",
+    "an integer": 42,
+    "a float": 3.14,
+    "a boolean": true,
+    "this is true": false,
+    "a secret": null,
+    "a list": [
+        1,
+        2,
+        3,
+        [
+            4,
+            5,
+            "pretty deep",
+            {
+                "secret": 69
+            }
+        ]
+    ],
+    "a dict": {
+        "key": "value",
+        "another key": "another value",
+        "a list": [
+            1,
+            2,
+            3
+        ]
+    }
+}
