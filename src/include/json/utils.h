@@ -5,8 +5,6 @@
 #include <format>
 #include <array>
 
-namespace MyStd {
-
 template <typename T, typename... U>
 concept IsAnyOf = (std::same_as<T, U> || ...);
 
@@ -33,5 +31,3 @@ public:
 private:
     std::variant<Integer, Float> _value;
 };
-
-} // namespace MyStd

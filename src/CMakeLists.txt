@@ -1,13 +1,9 @@
-
-# Take all headers, cpps and CMakeLists
-set(HeaderList
-    "json_utils.h"
-    "json.h"
+file(GLOB HeaderList
+    "include/json/*.h"
 )
 
-set(SRCList
-    "json.cpp"
-    "json_parser.cpp"
+file(GLOB SRCList
+    "*.cpp"
 )
 
 SET(CML "CMakeLists.txt")
@@ -17,4 +13,20 @@ add_library(
     ${HeaderList}
     ${SRCList}
     ${CML}
+)
+
+source_group("include/" FILES ${HeaderList})
+source_group("src/" FILES ${SRCList})
+source_group("CMakeLists/" FILES ${CML})
+
+target_include_directories(
+    ${LibName}
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/json
+)
+
+target_include_directories(
+    ${LibName}
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )

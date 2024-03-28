@@ -1,6 +1,6 @@
 #pragma once
 
-#include "json_utils.h"
+#include "utils.h"
 
 #include <string>
 #include <vector>
@@ -25,14 +25,14 @@ using Object = std::map<String, Value>;
 
 constexpr Null null {};
 
-using Number = MyStd::Number<Integer, Float>;
+using Number = ::Number<Integer, Float>;
 
 enum class ValueType {
     Null = 0, Bool, Number, String, Array, Object
 };
 
 template <typename T>
-concept ValidValue = MyStd::IsAnyOf<T,
+concept ValidValue = ::IsAnyOf<T,
     Null,
     Bool,
     Number,
@@ -42,7 +42,7 @@ concept ValidValue = MyStd::IsAnyOf<T,
 >;
 
 template <typename T>
-concept ValidNumber = MyStd::IsAnyOf<T,
+concept ValidNumber = ::IsAnyOf<T,
     Number::Integer,
     Number::Float
 >;
@@ -51,8 +51,8 @@ class Value {
 public:
     Value() : _value(null) {}
 
-    template<MyStd::Integral T> Value(T val) : _value(Number((Integer)val)) {}
-    template<MyStd::Floating T> Value(T val) : _value(Number((Float)val)) {}
+    template<::Integral T> Value(T val) : _value(Number((Integer)val)) {}
+    template<::Floating T> Value(T val) : _value(Number((Float)val)) {}
     Value(const std::string_view& val) : _value(String(val)) {}
     Value(const char * const val) : _value(String(val)) {}
 
