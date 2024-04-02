@@ -21,7 +21,7 @@ struct ObjectMatch {Object value; std::string_view::iterator end;};
 struct ValueMatch {Value value; std::string_view::iterator end;};
 
 const std::regex re_float   {R"(^\-?([1-9][0-9]*|0)(\.[0-9]+)?([eE][\-\+]?[0-9]+)?)"};
-const std::regex re_integer {R"(^\-?([1-9][0-9]*|0)(?=[^.eE0123456789]))"};
+const std::regex re_integer {R"(^\-?([1-9][0-9]*|0)(?=$|[^.eE0123456789]))"};
 //const std::regex re_string  {R"(^"([^\\"]|\\(["\\\/bfnrt]|(u([0-9]|[a-f]|[A-F]){4})))*")"};
 
 std::string_view moveToNonEmpty(std::string_view content) {
